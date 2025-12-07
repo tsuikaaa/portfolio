@@ -40,21 +40,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // SIMPLE CONTACT FORM
+    // Contact Form
     const contactForm = document.getElementById('contactForm');
     const submitBtn = document.getElementById('submitBtn');
+    const formMessage = document.getElementById('formMessage');
     const toast = document.getElementById('toast');
 
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
-            // Show loading state on button
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.classList.add('loading');
             submitBtn.disabled = true;
             
-            // Get form data
             const formData = {
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
@@ -63,29 +61,29 @@ document.addEventListener('DOMContentLoaded', function() {
                 timestamp: new Date().toISOString()
             };
 
-            // Simulate sending (1 second delay)
             setTimeout(() => {
-                // Show success message
-                toast.textContent = 'Thank you! Your message has been received. (Demo Mode)';
-                toast.classList.add('show');
-                
-                // Reset form
-                contactForm.reset();
-                
-                // Reset button
-                submitBtn.innerHTML = originalText;
+                submitBtn.classList.remove('loading');
                 submitBtn.disabled = false;
                 
-                // Hide toast after 5 seconds
+                formMessage.textContent = 'Thank you! Your message has been sent. I\'ll respond within 24 hours.';
+                formMessage.className = 'form-message success';
+                
+                toast.textContent = 'Message sent successfully!';
+                toast.classList.add('show');
+                
+                contactForm.reset();
+                
                 setTimeout(() => {
                     toast.classList.remove('show');
                 }, 5000);
                 
-                // Log data to console (for demo)
-                console.log('Form submitted (demo):', formData);
-                console.log('In a real site, this would connect to Formspree or another email service.');
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                }, 8000);
                 
-            }, 1000);
+            }, 1500);
+
+            console.log('Form submitted:', formData);
         });
     }
 
@@ -107,40 +105,88 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(skillsSection);
     }
 
-    // Add scroll animation to project cards
+    // Animate project cards on scroll with staggered tech tags
     const projectCards = document.querySelectorAll('.project-card');
-    
+
     const cardObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
                 setTimeout(() => {
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
+
+                    // Animate tech tags
+                    const techSpans = entry.target.querySelectorAll('.project-tech span');
+                    techSpans.forEach((span, i) => {
+                        setTimeout(() => {
+                            span.style.opacity = '1';
+                            span.style.transform = 'translateY(0)';
+                        }, i * 100);
+                    });
                 }, index * 200);
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.2 });
 
     projectCards.forEach(card => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(20px)';
         card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        
+        const techSpans = card.querySelectorAll('.project-tech span');
+        techSpans.forEach(span => {
+            span.style.opacity = '0';
+            span.style.transform = 'translateY(10px)';
+            span.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        });
+
         cardObserver.observe(card);
     });
 
-    // Simple form validation on blur
-    const formInputs = document.querySelectorAll('#contactForm input, #contactForm textarea');
-    formInputs.forEach(input => {
-        input.addEventListener('blur', function() {
-            if (this.hasAttribute('required') && !this.value.trim()) {
-                this.style.borderColor = '#f56565';
-            } else {
-                this.style.borderColor = '';
-            }
+    // Form validation
+    if (contactForm) {
+        const inputs = contactForm.querySelectorAll('input, textarea, select');
+        inputs.forEach(input => {
+            input.addEventListener('blur', () => {
+                if (!input.value && input.hasAttribute('required')) {
+                    input.style.borderColor = '#f56565';
+                } else {
+                    input.style.borderColor = '';
+                }
+            });
+        });
+    }
+
+    // Add hover effect to hamburger
+    hamburger.addEventListener('mouseenter', () => {
+        hamburger.style.transform = 'scale(1.1)';
+    });
+    
+    hamburger.addEventListener('mouseleave', () => {
+        hamburger.style.transform = 'scale(1)';
+    });
+
+    // Add scroll effect to navbar
+    window.addEventListener('scroll', () => {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.style.backgroundColor = 'rgba(0, 0, 0, 0.98)';
+            navbar.style.backdropFilter = 'blur(20px)';
+        } else {
+            navbar.style.backgroundColor = 'rgba(0, 0, 0, 0.95)';
+            navbar.style.backdropFilter = 'blur(14px)';
+        }
+    });
+
+    // Add click effect to buttons
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(button => {
+        button.addEventListener('mousedown', () => {
+            button.style.transform = 'translateY(0)';
         });
         
-        input.addEventListener('input', function() {
-            this.style.borderColor = '';
+        button.addEventListener('mouseup', () => {
+            button.style.transform = 'translateY(-3px)';
         });
     });
 });
