@@ -85,25 +85,20 @@ function initCharCounter() {
 
     if (!messageTextarea || !charCount) return;
 
-    // Initial count
     charCount.textContent = messageTextarea.value.length;
 
     messageTextarea.addEventListener('input', () => {
         const length = messageTextarea.value.length;
         charCount.textContent = length;
-
-        if (length > 1800) {
-            charCount.style.color = '#f56565'; // red
-        } else if (length > 1500) {
-            charCount.style.color = '#ed8936'; // orange
-        } else {
-            charCount.style.color = 'var(--soft-pink)';
-        }
+        
+        if (length > 1800) charCount.style.color = '#f56565';
+        else if (length > 1500) charCount.style.color = '#ed8936';
+        else charCount.style.color = 'var(--soft-pink)';
     });
 }
 
 // ======================
-// Show Form Message
+// Show Message
 // ======================
 function showFormMessage(message, type = 'success') {
     const formMessage = document.getElementById('formMessage');
@@ -113,87 +108,88 @@ function showFormMessage(message, type = 'success') {
     formMessage.className = `form-message ${type}`;
     formMessage.style.display = 'block';
 
-    // Auto-hide after 10 seconds
     setTimeout(() => {
         formMessage.style.display = 'none';
-    }, 10000);
+    }, 8000);
 }
 
 // ======================
-// Form Validation & Submission - FIXED VERSION
+// SIMPLE Form Handling
 // ======================
 function setupForm() {
     const form = document.getElementById('contactForm');
     const submitBtn = document.getElementById('submitBtn');
+    
     if (!form || !submitBtn) return;
 
-    const inputs = form.querySelectorAll('input, textarea, select');
-
-    // Real-time validation
-    inputs.forEach(input => {
-        input.addEventListener('blur', () => {
-            if (!input.checkValidity() && input.value.trim() !== '') {
-                input.style.borderColor = '#f56565';
+    // Minimal validation on submit
+    form.addEventListener('submit', function(e) {
+        // Basic check for empty required fields
+        const requiredFields = form.querySelectorAll('[required]');
+        let hasEmpty = false;
+        
+        requiredFields.forEach(field => {
+            if (!field.value.trim()) {
+                field.style.borderColor = '#f56565';
+                hasEmpty = true;
+                
+                if (!field.previousElementSibling) {
+                    const error = document.createElement('div');
+                    error.textContent = 'This field is required';
+                    error.style.color = '#f56565';
+                    error.style.fontSize = '0.85rem';
+                    error.style.marginTop = '5px';
+                    field.parentNode.insertBefore(error, field.nextSibling);
+                    
+                    // Remove error after 5 seconds
+                    setTimeout(() => error.remove(), 5000);
+                }
             } else {
-                input.style.borderColor = '';
+                field.style.borderColor = '';
             }
         });
-        input.addEventListener('input', () => {
-            if (input.checkValidity()) input.style.borderColor = '';
-        });
-    });
 
-    // Submit handler
-    form.addEventListener('submit', (e) => {
-        // Get form values
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const subject = document.getElementById('subject').value;
-        const message = document.getElementById('message').value.trim();
-        const terms = document.getElementById('terms').checked;
-
-        const errors = [];
-        if (!name || name.length < 2) errors.push('Please enter a valid name (at least 2 characters).');
-        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.push('Please enter a valid email address.');
-        if (!subject) errors.push('Please select an inquiry type.');
-        if (!message || message.length < 20) errors.push('Please enter a message with at least 20 characters.');
-        if (!terms) errors.push('Please agree to the terms and privacy policy.');
-
-        if (errors.length > 0) {
-            // Show error and prevent submission
+        if (hasEmpty) {
             e.preventDefault();
-            showFormMessage(errors[0], 'error');
-            const firstInvalid = form.querySelector(':invalid');
-            if (firstInvalid) firstInvalid.focus();
+            showFormMessage('Please fill all required fields.', 'error');
             return;
         }
 
-        // If validation passes, allow Formspree to handle it
-        // Show loading state
+        // Show loading
         submitBtn.disabled = true;
         submitBtn.classList.add('loading');
         
-        // Form will submit normally to Formspree
-        // Formspree will redirect back to https://tsuikaaa.github.io/portfolio/?success=true
+        // Let Formspree handle submission
+        // Remove any leftover errors
+        form.querySelectorAll('.field-error').forEach(el => el.remove());
+    });
+
+    // Clear errors when user types
+    form.querySelectorAll('input, textarea').forEach(field => {
+        field.addEventListener('input', function() {
+            this.style.borderColor = '';
+            const error = this.nextElementSibling;
+            if (error && error.style.color === 'rgb(245, 101, 101)') {
+                error.remove();
+            }
+        });
     });
 }
 
 // ======================
-// Initialize on page load
+// Initialize
 // ======================
 document.addEventListener('DOMContentLoaded', () => {
     initCharCounter();
     setupForm();
 
-    // Check for success parameter in URL
+    // Check for success in URL
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.has('success')) {
-        showFormMessage('Thank you! Your message has been sent successfully. I\'ll respond within 24 hours.', 'success');
-        
-        // Clear the URL parameter without reloading
+        showFormMessage('Thank you! Your message has been sent successfully.', 'success');
         window.history.replaceState({}, document.title, window.location.pathname);
         
-        // Reset form if it exists
+        // Reset form
         const form = document.getElementById('contactForm');
         if (form) {
             form.reset();
