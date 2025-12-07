@@ -30,28 +30,27 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">  
-    <div class="container">
-        <div class="hero-content">
-            <h3 class="subtitle"><i class="fas fa-hand-wave"></i> Hello, I'm</h3>
-            <h1 class="title">Suhita Ali</h1>
-            <h2 class="role">Future Web Designer</h2>
-            <p class="description">I design digital experiences that are functional, engaging, and visually striking. Combining my skills in web development and UX/UI design, I create websites and interfaces that stand out for their clarity, aesthetics, and attention to user experience.</p>
+        <div class="container">
+            <div class="hero-content">
+                <h3 class="subtitle"><i class="fas fa-hand-wave"></i> Hello, I'm</h3>
+                <h1 class="title">Suhita Ali</h1>
+                <h2 class="role">Future Web Designer</h2>
+                <p class="description">I design digital experiences that are functional, engaging, and visually striking. Combining my skills in web development and UX/UI design, I create websites and interfaces that stand out for their clarity, aesthetics, and attention to user experience.</p>
 
-            <div class="hero-buttons">
-                <a href="#projects" class="btn"><i class="fas fa-code"></i> View Projects</a>
-                <a href="#contact" class="btn btn-outline"><i class="fas fa-envelope"></i> Contact Me</a>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn"><i class="fas fa-code"></i> View Projects</a>
+                    <a href="#contact" class="btn btn-outline"><i class="fas fa-envelope"></i> Contact Me</a>
+                </div>
             </div>
-        </div>
-        <div class="hero-image">
-            <div class="image-wrapper">
-                <div class="image-frame">
-                    <img src="img/picrew.png" alt="Suhita Ali" class="hero-img">
+            <div class="hero-image">
+                <div class="image-wrapper">
+                    <div class="image-frame">
+                        <img src="img/picrew.png" alt="Suhita Ali" class="hero-img">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-
+    </section>
 
     <!-- About Section -->
     <section id="about" class="about">
@@ -60,7 +59,7 @@
             <div class="about-content">
                 <div class="about-text">
                     <h3>Designing digital experiences with creativity and care</h3>
-                    <p>I'm a student in BUT MMI (Métiers du Multimédia et de l’Internet), a French bachelor program focused on digital media, web development, and multimedia design. It trains students to create websites, apps, and digital content while combining technical skills with creativity and user-centered design.</p>
+                    <p>I'm a student in BUT MMI (Métiers du Multimédia et de l'Internet), a French bachelor program focused on digital media, web development, and multimedia design. It trains students to create websites, apps, and digital content while combining technical skills with creativity and user-centered design.</p>
                     <p>Through my studies and personal projects, I gain experience in Figma, HTML/CSS, JavaScript, and visual design. I focus on building digital experiences that are functional, interactive, and visually engaging.</p>
                     <div class="info-grid">
                         <div class="info-item">
@@ -249,94 +248,85 @@
         </div>
     </section>
 
-<!-- Contact Section -->
-<section id="contact" class="contact">
-    <div class="container">
-        <h2 class="section-title">Get In Touch</h2>
-        <div class="contact-content">
-            <div class="contact-info">
-                <h3>Let's create something bold together</h3>
-                <p>I'm currently available for freelance projects and full-time opportunities. Let's discuss how we can bring your vision to life.</p>
-                <div class="contact-details">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h4>Email</h4>
-                            <p>suhita2501@gmail.com</p>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's create something bold together</h3>
+                    <p>I'm currently available for freelance projects and full-time opportunities. Let's discuss how we can bring your vision to life.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>suhita2501@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Location</h4>
+                                <p>Paris, France</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h4>Phone</h4>
-                            <p>+1 (555) 123-4567</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h4>Location</h4>
-                            <p>Paris, France</p>
-                        </div>
+                    <div class="social-links">
+                        <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" title="Dribbble"><i class="fab fa-dribbble"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-                <div class="social-links">
-                    <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="#" title="Dribbble"><i class="fab fa-dribbble"></i></a>
-                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-                </div>
+                
+                <!-- SIMPLE CONTACT FORM -->
+                <form class="contact-form" id="contactForm">
+                    <div class="form-message" id="formMessage"></div>
+                    
+                    <div class="form-group">
+                        <label for="name">Your Name *</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Your Email *</label>
+                        <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="What is this about?">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Your Message *</label>
+                        <textarea id="message" name="message" placeholder="Your message here..." required rows="5"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn" id="submitBtn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
             </div>
-            
-            <!-- FORMSPREE CONTACT FORM -->
-            <form class="contact-form" id="contactForm" action="https://formspree.io/f/xrbnaegw" method="POST">
-    <!-- SIMPLIFIED HIDDEN FIELDS -->
-    <input type="hidden" name="_subject" value="New Portfolio Message">
-    <input type="hidden" name="_next" value="https://tsuikaaa.github.io/portfolio/?success=true">
-    
-    <!-- Message Container -->
-    <div class="form-message" id="formMessage"></div>
-    
-    <!-- SIMPLIFIED FIELDS -->
-    <div class="form-group">
-        <label for="name">Your Name *</label>
-        <input type="text" id="name" name="name" required placeholder="Your Name">
-    </div>
-    
-    <div class="form-group">
-        <label for="email">Your Email *</label>
-        <input type="email" id="email" name="email" required placeholder="your@email.com">
-    </div>
-    
-    <div class="form-group">
-        <label for="subject">Subject *</label>
-        <input type="text" id="subject" name="subject" required placeholder="What is this about?">
-    </div>
-    
-    <div class="form-group">
-        <label for="message">Your Message *</label>
-        <textarea id="message" name="message" required placeholder="Your message..." rows="6"></textarea>
-    </div>
-    
-    <button type="submit" class="btn" id="submitBtn">
-        <span class="spinner"></span>
-        <i class="fas fa-paper-plane"></i> Send Message
-    </button>
-</form>
-
-
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>About This Design</h3>
-                    <p>Built with a pure black (#050509) and pink (#FFDCE4 / #FF2CAD) color palette. Every element follows this bold aesthetic.</p>
-                    <p>Inspired by dark mode design principles and emotional color contrast.</p>
+                    <h3>About This Portfolio</h3>
+                    <p>Designed with a pure black (#050509) and pink (#FFDCE4 / #FF2CAD) color palette. Every element follows this bold aesthetic.</p>
+                    <p>Built with HTML, CSS, and JavaScript.</p>
                 </div>
                 <div class="footer-section">
                     <h3>Quick Links</h3>
@@ -346,15 +336,14 @@
                     <p><a href="#contact">Contact</a></p>
                 </div>
                 <div class="footer-section">
-                    <h3>Color Palette</h3>
-                    <p>• Primary Black: #050509</p>
-                    <p>• Soft Pink: #FFDCE4</p>
-                    <p>• Hot Pink: #FF2CAD</p>
-                    <p>• Muted Text: #C7C7D5</p>
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-envelope"></i> suhita2501@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Paris, France</p>
+                    <p><i class="fas fa-graduation-cap"></i> BUT MMI Student</p>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2024 Suhita Ali. All rights reserved. | Bold black & pink aesthetic</p>
+                <p>&copy; 2024 Suhita Ali. All rights reserved. | BUT MMI Portfolio</p>
             </div>
         </div>
     </footer>

@@ -1,199 +1,146 @@
-// Mobile navigation toggle
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
+document.addEventListener('DOMContentLoaded', function() {
+    // Mobile Navigation
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const navItems = document.querySelectorAll('.nav-links a');
 
-if (hamburger && navLinks) {
     hamburger.addEventListener('click', () => {
         navLinks.classList.toggle('active');
         hamburger.classList.toggle('active');
     });
 
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
+    // Close mobile menu on link click
+    navItems.forEach(item => {
+        item.addEventListener('click', () => {
             navLinks.classList.remove('active');
             hamburger.classList.remove('active');
         });
     });
-}
 
-// Active link on scroll
-const sections = document.querySelectorAll('section[id]');
-const navAnchors = document.querySelectorAll('.nav-links a');
-
-window.addEventListener('scroll', () => {
-    const scrollPos = window.scrollY + 150;
-
-    sections.forEach(section => {
-        const top = section.offsetTop;
-        const height = section.offsetHeight;
-        const id = section.getAttribute('id');
-
-        if (scrollPos >= top && scrollPos <= top + height) {
-            navAnchors.forEach(a => a.classList.remove('active'));
-            const activeLink = document.querySelector(`.nav-links a[href="#${id}"]`);
-            if (activeLink) activeLink.classList.add('active');
-        }
-    });
-});
-
-// Contact form handling (fake submit)
-const contactForm = document.getElementById('contactForm');
-const formMessage = document.getElementById('formMessage');
-const submitBtn = document.getElementById('submitBtn');
-const toast = document.getElementById('toast');
-
-function showToast(text) {
-    if (!toast) return;
-    toast.textContent = text;
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 3000);
-}
-
-if (contactForm && formMessage && submitBtn) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        submitBtn.classList.add('loading');
-        const btnText = submitBtn.querySelector('.btn-text');
-        if (btnText) btnText.textContent = 'Sending...';
-
-        setTimeout(() => {
-            submitBtn.classList.remove('loading');
-            if (btnText) btnText.textContent = 'Send Message';
-
-            formMessage.className = 'form-message success';
-            formMessage.textContent = 'Thank you! Your message has been sent (demo).';
-            showToast('Your message has been sent (demo only).');
-
-            contactForm.reset();
-        }, 1200);
-    });
-}
-
-// Set current year in footer
-const yearSpan = document.getElementById('year');
-if (yearSpan) {
-    yearSpan.textContent = new Date().getFullYear();
-}
-
-// ======================
-// Character Counter
-// ======================
-function initCharCounter() {
-    const messageTextarea = document.getElementById('message');
-    const charCount = document.getElementById('charCount');
-
-    if (!messageTextarea || !charCount) return;
-
-    charCount.textContent = messageTextarea.value.length;
-
-    messageTextarea.addEventListener('input', () => {
-        const length = messageTextarea.value.length;
-        charCount.textContent = length;
-        
-        if (length > 1800) charCount.style.color = '#f56565';
-        else if (length > 1500) charCount.style.color = '#ed8936';
-        else charCount.style.color = 'var(--soft-pink)';
-    });
-}
-
-// ======================
-// Show Message
-// ======================
-function showFormMessage(message, type = 'success') {
-    const formMessage = document.getElementById('formMessage');
-    if (!formMessage) return;
-
-    formMessage.textContent = message;
-    formMessage.className = `form-message ${type}`;
-    formMessage.style.display = 'block';
-
-    setTimeout(() => {
-        formMessage.style.display = 'none';
-    }, 8000);
-}
-
-// ======================
-// SIMPLE Form Handling
-// ======================
-function setupForm() {
-    const form = document.getElementById('contactForm');
-    const submitBtn = document.getElementById('submitBtn');
+    // Active navigation on scroll
+    const sections = document.querySelectorAll('section');
     
-    if (!form || !submitBtn) return;
-
-    // Minimal validation on submit
-    form.addEventListener('submit', function(e) {
-        // Basic check for empty required fields
-        const requiredFields = form.querySelectorAll('[required]');
-        let hasEmpty = false;
+    window.addEventListener('scroll', () => {
+        let current = '';
         
-        requiredFields.forEach(field => {
-            if (!field.value.trim()) {
-                field.style.borderColor = '#f56565';
-                hasEmpty = true;
-                
-                if (!field.previousElementSibling) {
-                    const error = document.createElement('div');
-                    error.textContent = 'This field is required';
-                    error.style.color = '#f56565';
-                    error.style.fontSize = '0.85rem';
-                    error.style.marginTop = '5px';
-                    field.parentNode.insertBefore(error, field.nextSibling);
-                    
-                    // Remove error after 5 seconds
-                    setTimeout(() => error.remove(), 5000);
-                }
-            } else {
-                field.style.borderColor = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            
+            if (scrollY >= (sectionTop - 100)) {
+                current = section.getAttribute('id');
             }
         });
 
-        if (hasEmpty) {
+        navItems.forEach(item => {
+            item.classList.remove('active');
+            if (item.getAttribute('href').substring(1) === current) {
+                item.classList.add('active');
+            }
+        });
+    });
+
+    // SIMPLE CONTACT FORM
+    const contactForm = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const toast = document.getElementById('toast');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            showFormMessage('Please fill all required fields.', 'error');
-            return;
-        }
+            
+            // Show loading state on button
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value,
+                timestamp: new Date().toISOString()
+            };
 
-        // Show loading
-        submitBtn.disabled = true;
-        submitBtn.classList.add('loading');
-        
-        // Let Formspree handle submission
-        // Remove any leftover errors
-        form.querySelectorAll('.field-error').forEach(el => el.remove());
-    });
+            // Simulate sending (1 second delay)
+            setTimeout(() => {
+                // Show success message
+                toast.textContent = 'Thank you! Your message has been received. (Demo Mode)';
+                toast.classList.add('show');
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Reset button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                
+                // Hide toast after 5 seconds
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 5000);
+                
+                // Log data to console (for demo)
+                console.log('Form submitted (demo):', formData);
+                console.log('In a real site, this would connect to Formspree or another email service.');
+                
+            }, 1000);
+        });
+    }
 
-    // Clear errors when user types
-    form.querySelectorAll('input, textarea').forEach(field => {
-        field.addEventListener('input', function() {
-            this.style.borderColor = '';
-            const error = this.nextElementSibling;
-            if (error && error.style.color === 'rgb(245, 101, 101)') {
-                error.remove();
+    // Animate skill bars on scroll
+    const skillBars = document.querySelectorAll('.skill-level');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                skillBars.forEach(bar => {
+                    bar.style.animationPlayState = 'running';
+                });
             }
         });
-    });
-}
+    }, { threshold: 0.5 });
 
-// ======================
-// Initialize
-// ======================
-document.addEventListener('DOMContentLoaded', () => {
-    initCharCounter();
-    setupForm();
-
-    // Check for success in URL
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has('success')) {
-        showFormMessage('Thank you! Your message has been sent successfully.', 'success');
-        window.history.replaceState({}, document.title, window.location.pathname);
-        
-        // Reset form
-        const form = document.getElementById('contactForm');
-        if (form) {
-            form.reset();
-            document.getElementById('charCount').textContent = '0';
-        }
+    const skillsSection = document.querySelector('.skills');
+    if (skillsSection) {
+        observer.observe(skillsSection);
     }
+
+    // Add scroll animation to project cards
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    const cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }, index * 200);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    projectCards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        cardObserver.observe(card);
+    });
+
+    // Simple form validation on blur
+    const formInputs = document.querySelectorAll('#contactForm input, #contactForm textarea');
+    formInputs.forEach(input => {
+        input.addEventListener('blur', function() {
+            if (this.hasAttribute('required') && !this.value.trim()) {
+                this.style.borderColor = '#f56565';
+            } else {
+                this.style.borderColor = '';
+            }
+        });
+        
+        input.addEventListener('input', function() {
+            this.style.borderColor = '';
+        });
+    });
 });
