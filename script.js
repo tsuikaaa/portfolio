@@ -110,17 +110,17 @@ function showFormMessage(message, type = 'success') {
     if (!formMessage) return;
 
     formMessage.textContent = message;
-    formMessage.className = `form-message ${type} show`;
+    formMessage.className = `form-message ${type}`;
     formMessage.style.display = 'block';
 
+    // Auto-hide after 10 seconds
     setTimeout(() => {
-        formMessage.classList.remove('show');
         formMessage.style.display = 'none';
     }, 10000);
 }
 
 // ======================
-// Form Validation & Submission
+// Form Validation & Submission - FIXED VERSION
 // ======================
 function setupForm() {
     const form = document.getElementById('contactForm');
@@ -145,12 +145,7 @@ function setupForm() {
 
     // Submit handler
     form.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        // Show loading spinner
-        submitBtn.disabled = true;
-        submitBtn.classList.add('loading');
-
+        // Get form values
         const name = document.getElementById('name').value.trim();
         const email = document.getElementById('email').value.trim();
         const subject = document.getElementById('subject').value;
@@ -165,43 +160,21 @@ function setupForm() {
         if (!terms) errors.push('Please agree to the terms and privacy policy.');
 
         if (errors.length > 0) {
+            // Show error and prevent submission
+            e.preventDefault();
             showFormMessage(errors[0], 'error');
             const firstInvalid = form.querySelector(':invalid');
             if (firstInvalid) firstInvalid.focus();
-            submitBtn.disabled = false;
-            submitBtn.classList.remove('loading');
             return;
         }
 
-        // Submit via fetch
-        fetch(form.action, {
-            method: 'POST',
-            body: new FormData(form),
-            headers: { 'Accept': 'application/json' }
-        })
-        .then(res => {
-            if (res.ok) {
-                showFormMessage('Thank you! Your message has been sent successfully.', 'success');
-                form.reset();
-                document.getElementById('charCount').textContent = '0';
-
-                const toast = document.getElementById('toast');
-                if (toast) {
-                    toast.textContent = 'Message sent successfully!';
-                    toast.classList.add('show');
-                    setTimeout(() => toast.classList.remove('show'), 5000);
-                }
-            } else {
-                throw new Error('Form submission failed');
-            }
-        })
-        .catch(() => {
-            showFormMessage('Oops! Something went wrong. Please try again or email me directly.', 'error');
-        })
-        .finally(() => {
-            submitBtn.disabled = false;
-            submitBtn.classList.remove('loading');
-        });
+        // If validation passes, allow Formspree to handle it
+        // Show loading state
+        submitBtn.disabled = true;
+        submitBtn.classList.add('loading');
+        
+        // Form will submit normally to Formspree
+        // Formspree will redirect back to https://tsuikaaa.github.io/portfolio/?success=true
     });
 }
 
@@ -212,9 +185,19 @@ document.addEventListener('DOMContentLoaded', () => {
     initCharCounter();
     setupForm();
 
+    // Check for success parameter in URL
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.has('success')) {
-        showFormMessage('Thank you! Your message has been sent successfully.', 'success');
+        showFormMessage('Thank you! Your message has been sent successfully. I\'ll respond within 24 hours.', 'success');
+        
+        // Clear the URL parameter without reloading
         window.history.replaceState({}, document.title, window.location.pathname);
+        
+        // Reset form if it exists
+        const form = document.getElementById('contactForm');
+        if (form) {
+            form.reset();
+            document.getElementById('charCount').textContent = '0';
+        }
     }
 });
