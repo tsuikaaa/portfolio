@@ -176,3 +176,57 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, 1000);
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  // ---- MODAL PROJECTS ----
+  const modal = document.getElementById('projectModal');
+  const overlay = document.getElementById('projectModalOverlay');
+  const closeBtn = document.getElementById('projectModalClose');
+
+  if (modal && overlay && closeBtn) {
+    const titleEl = document.getElementById('projectModalTitle');
+    const descEl = document.getElementById('projectModalDescription');
+    const techEl = document.getElementById('projectModalTech');
+    const linkEl = document.getElementById('projectModalLink');
+
+    const openButtons = document.querySelectorAll('.open-project-modal');
+
+    const openModal = (btn) => {
+      const title = btn.dataset.title || '';
+      const description = btn.dataset.description || '';
+      const tech = btn.dataset.tech || '';
+      const link = btn.dataset.link || '#';
+
+      titleEl.textContent = title;
+      descEl.textContent = description;
+      techEl.textContent = tech;
+      linkEl.href = link;
+
+      modal.classList.add('is-open');
+      overlay.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+    };
+
+    const closeModal = () => {
+      modal.classList.remove('is-open');
+      overlay.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+    };
+
+    openButtons.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal(btn);
+      });
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+  }
+});

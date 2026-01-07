@@ -1640,3 +1640,78 @@ textarea {
     color: var(--black);
     text-shadow: none;
 }
+
+/* ===== PROJECT MODAL ===== */
+
+.project-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 900;
+}
+
+.project-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 901;
+}
+
+.project-modal-content {
+  background: #070312; /* adapte à ton background */
+  border: 1px solid #ff66b2; /* rose punk */
+  box-shadow: 0 0 30px rgba(255, 102, 178, 0.4);
+  border-radius: 16px;
+  max-width: 480px;
+  width: 90%;
+  padding: 2rem;
+  position: relative;
+}
+
+.project-modal-content h3 {
+  font-size: 1.6rem;
+  margin-bottom: 0.75rem;
+}
+
+.project-modal-content p {
+  line-height: 1.5;
+}
+
+.project-modal-tech {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.project-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border: none;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.25rem;
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.project-modal-close:hover {
+  transform: scale(1.1);
+  color: #ff66b2;
+}
+
+/* état ouvert */
+.project-modal.is-open,
+.project-modal-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
