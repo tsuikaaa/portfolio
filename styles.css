@@ -9,6 +9,7 @@
     --poppy-pink: #F33083;      /* POPPY PINK - Primary */
     --punch-pink: #FF80B4;      /* PUNCHY PINK - Secondary */
     --pastel-pink: #FFADD7;     /* PASTEL PINK - Tertiary */
+    --bubblegum-pink: #FFCCE5;  /* BUBBLEGUM PINK - Accent */
     --white: #FFFFFF;           /* REGULAR WHITE */
     --off-white: #F9F9F9;       /* OFF-WHITE */
     --black: #000000;           /* REGULAR BLACK */
@@ -1078,13 +1079,12 @@ h1, h2, h3, h4 {
 }
 
 .project-link:hover {
-    color: var(--poppy-pink);
+    color: var(--bubblegum-pink);
     gap: 25px;
 }
 
 .project-link:hover::after {
     right: -40px;
-    opacity: 1;
     transform: rotate(360deg);
 }
 
