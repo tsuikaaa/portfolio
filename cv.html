@@ -1,143 +1,299 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <title>CV – Suhita Ali</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-
-  <!-- CV stylesheet -->
   <link rel="stylesheet" href="cv.css">
 </head>
 <body>
-  <main class="cv-container">
-    <!-- CV Header -->
-    <header class="cv-header">
-      <h1>Suhita Ali</h1>
-      <h2>BUT MMI Student · Web & UX/UI Design</h2>
-      <p>
-        I am a student in the <strong>Bachelor’s in Multimedia and Internet</strong>, specializing in interface design and user experience.
-        I create digital experiences that are both functional and visually engaging, combining web design, prototyping,
-        and front-end development with a strong user-centered approach.
-      </p>
-      <div class="cv-actions">
-        <a href="mailto:suhita2501@gmail.com" class="cv-btn">Contact me</a>
-        <a href="index.html" target="_blank" class="cv-btn cv-btn-outline">View my portfolio</a>
+  <div class="desktop">
+
+    <!-- Barre de navigateur du haut -->
+    <header class="top-bar">
+      <div class="top-bar-left">
+        <span class="top-dot"></span>
+        <span class="top-dot"></span>
+        <span class="top-dot"></span>
+      </div>
+      <div class="top-bar-center">
+        <span class="top-tab active"></span>
+        <span class="top-tab"></span>
+        <span class="top-tab"></span>
+      </div>
+      <div class="top-bar-right">
+        <span class="icon-square"></span>
+        <span class="icon-square"></span>
+        <span class="icon-square"></span>
       </div>
     </header>
 
-    <!-- Profile -->
-    <section class="cv-section">
-      <div class="cv-card">
-        <h3>Profile</h3>
-        <p>
-          I am seeking an <strong>internship in web and UX/UI design</strong> to apply my creative and technical
-          skills. Motivated, detail-oriented, and professional, I aim to contribute to innovative digital projects,
-          balancing aesthetics, usability, and optimal user experience.
-        </p>
-      </div>
-    </section>
+    <main class="layout">
 
-    <!-- Skills -->
-    <section class="cv-section">
-      <div class="cv-card">
-        <h3>Skills</h3>
-        <div class="skills-grid">
-          <div class="skills-column">
-            <h4>Design & UX/UI</h4>
-            <ul>
-              <li>Wireframing and prototyping (Figma, low/high-fidelity)</li>
-              <li>Web and mobile interface design</li>
-              <li>Design systems, style guides, and UI kits</li>
-              <li>Accessibility and usability awareness</li>
-            </ul>
+      <!-- FENÊTRE PRINCIPALE -->
+      <section class="window window-main">
+        <div class="window-header">
+          <div class="wh-left">
+            <span class="wh-dot red"></span>
+            <span class="wh-dot yellow"></span>
+            <span class="wh-dot green"></span>
           </div>
-
-          <div class="skills-column">
-            <h4>Front-end</h4>
-            <ul>
-              <li>HTML, CSS (responsive layouts, grid, flexbox)</li>
-              <li>Animations and micro-interactions</li>
-              <li>Basic JavaScript for interactive interfaces</li>
-            </ul>
-          </div>
-
-          <div class="skills-column">
-            <h4>Tools & Media</h4>
-            <ul>
-              <li>Adobe Creative Suite / equivalents (graphic design, retouching)</li>
-              <li>Video creation and editing</li>
-              <li>Collaborative tools (Notion, Figma, Drive, etc.)</li>
-            </ul>
+          <div class="wh-right">
+            <span class="wh-icon"></span>
+            <span class="wh-icon"></span>
+            <span class="wh-icon"></span>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Experience & Projects -->
-<section class="cv-section">
-    <div class="cv-card">
-        <h3>Experience & Projects</h3>
-        <ul>
-            <li>
-                <strong>Student Ambassador – Université Gustave Eiffel</strong><br>
-                Sep 2024 – Present · On-site<br>
-                Welcoming and guiding prospective students, leading information sessions during open days, presenting courses and facilities, managing groups, and contributing to a positive visitor experience.
-            </li>
-            <li>
-                <strong>Sales Assistant – LOLLIPOPS PARIS</strong><br>
-                Jun 2025 – Nov 2025 · On-site<br>
-                Providing personalized customer advice, presenting products, restocking and merchandising, handling transactions, and ensuring a welcoming store experience.
-            </li>
-            <li>
-                <strong>Volunteer Translator – Enhypen France</strong><br>
-                Jan 2023 – Dec 2023 · Remote<br>
-                Translating official K-pop content in English and French, managing deadlines, and communicating within the volunteer team.
-            </li>
-            <li>
-                <strong>Intern – Lafarge France</strong><br>
-                Mar 2022 · On-site<br>
-                Observation internship.
-            </li>
-            <li>
-                <strong>Intern – WISTEL</strong><br>
-                Feb 2021 · On-site<br>
-                Observation internship.
-            </li>
-        </ul>
-        <p>Projects are presented in my <a href="index.html#projects">portfolio</a>.</p>
+        <div class="window-body main-grid">
+          <div class="main-left">
+            <div class="avatar"></div>
+            <h1 class="name">SUHITA<br>ALI</h1>
+          </div>
+
+          <div class="main-middle">
+            <h2 class="role">ÉTUDIANTE<br>BUT MMI</h2>
+            <p class="meta">19 ans<br>93330 Neuilly-sur-Marne</p>
+          </div>
+
+          <div class="main-full">
+            <p class="intro">
+  Je recherche un stage dans le domaine du multimédia et du web (design, intégration ou communication digitale)
+  afin de développer mes compétences techniques et créatives. Curieuse, impliquée et organisée, je souhaite
+  participer à des projets concrets tout en apprenant auprès d’une équipe professionnelle.
+</p>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section class="window window-contact">
+        <div class="window-header">
+          <div class="wh-left">
+            <span class="wh-dot red"></span>
+            <span class="wh-dot yellow"></span>
+            <span class="wh-dot green"></span>
+          </div>
+        </div>
+        <div class="window-body">
+          <h3 class="section-title">CONTACT</h3>
+          <p>📞 07 60 50 98 64</p>
+          <p>✉️ suhita2501@gmail.com</p>
+          <p>📍 93330 Neuilly-sur-Marne</p>
+        </div>
+      </section>
+
+<!-- FORMATION -->
+<section class="window window-edu">
+  <div class="window-header">
+    <div class="wh-left">
+      <span class="wh-dot red"></span>
+      <span class="wh-dot yellow"></span>
+      <span class="wh-dot green"></span>
     </div>
+  </div>
+
+  <div class="window-body">
+    <h3 class="section-title">FORMATION</h3>
+
+    <article class="edu-item">
+      <h4>BUT Métiers du Multimédia et de l’Internet</h4>
+      <p class="edu-role">Université Gustave Eiffel – Champs-sur-Marne</p>
+      <p class="edu-date">Septembre 2024 – 2027</p>
+    </article>
+
+    <article class="edu-item">
+      <h4>Baccalauréat STI2D</h4>
+      <p class="edu-role">
+        Spécialité Système informatique et numérique<br>
+        Lycée Évariste Galois
+      </p>
+      <p class="edu-date">2021 – 2024</p>
+    </article>
+
+    <h3 class="section-title section-title-sub">CERTIFICATIONS</h3>
+
+    <article class="edu-item">
+      <h4>Certification PIX</h4>
+      <p class="edu-role">Compétences numériques</p>
+      <p class="edu-date">2024</p>
+    </article>
+  </div>
 </section>
 
-    <!-- Education -->
-    <section class="cv-section">
-      <div class="cv-card">
-        <h3>Education</h3>
-        <ul>
-          <li>
-            <strong>Bachelor’s in Multimedia and Internet</strong><br>
-            Université Gustave Eiffel · 2024 – Present<br>
-            French bachelor-level program focused on web design, UX/UI, web development, and digital media.
-          </li>
-          <li>
-            <strong>Baccalauréat STI2D – Systems and Digital Technologies</strong><br>
-            Lycée Évariste Galois · 2021 – 2024
-          </li>
-        </ul>
-      </div>
-    </section>
 
-    <!-- Interests -->
-    <section class="cv-section">
-      <div class="cv-card">
-        <h3>Interests</h3>
-        <p>
-          Video games and graphic design, video creation and editing, badminton and storytelling.
-        </p>
-      </div>
-    </section>
-  </main>
+      <!-- EXPÉRIENCES PROFESSIONNELLES -->
+      <section class="window window-exp">
+  <div class="window-header">
+    <div class="wh-left">
+      <span class="wh-dot red"></span>
+      <span class="wh-dot yellow"></span>
+      <span class="wh-dot green"></span>
+    </div>
+  </div>
+
+  <div class="window-body">
+    <h3 class="section-title">EXPÉRIENCES PROFESSIONNELLES</h3>
+    
+    <article class="job">
+      <h4>Étudiante ambassadrice</h4>
+      <p class="job-role">Université Gustave Eiffel · Septembre 2025 - Aujourd’hui</p>
+      <ul>
+        <li>Organisation et animation de sessions d’information lors des journées portes ouvertes.</li>
+        <li>Accueil et orientation des futurs étudiants.</li>
+        <li>Présentation des formations et des projets universitaires.</li>
+      </ul>
+    </article>
+
+    <article class="job">
+      <h4>Conseillère de vente</h4>
+      <p class="job-role">Lollipops, Paris · Juin 2025 – Novembre 2025</p>
+      <ul>
+        <li>Accueil et conseil personnalisé auprès des clients.</li>
+        <li>Présentation des produits et de leurs caractéristiques.</li>
+        <li>Accompagnement du client tout au long du parcours d’achat.</li>
+        <li>Contribution à une expérience client positive et qualitative.</li>
+      </ul>
+    </article>
+
+    <article class="job">
+      <h4>Stage d’observation</h4>
+      <p class="job-role">Wistel, Lognes · Février 2021</p>
+    </article>
+
+    <article class="job">
+      <h4>Stage d’observation</h4>
+      <p class="job-role">Lafarge, Alfortville · Mars 2022</p>
+    </article><br>
+
+    <!-- PROJETS -->
+    <h3 class="section-title">PROJETS</h3>
+
+    <article class="job">
+      <h4>Portfolio en ligne</h4>
+      <p class="job-role">Projet personnel · 2025</p>
+      <ul>
+        <li>Conception d’un site portfolio responsive pour présenter mes projets académiques et professionnels.</li>
+        <li>Travail sur l’arborescence, l’ergonomie et l’identité visuelle.</li>
+      </ul>
+    </article>
+
+    <article class="job">
+      <h4>Projet universitaire – Application web</h4>
+      <p class="job-role">Université Gustave Eiffel · 2024</p>
+      <ul>
+        <li>Réalisation d’une application web en équipe (conception des maquettes et de l’interface).</li>
+        <li>Participation à la rédaction du cahier des charges et aux tests utilisateurs.</li>
+      </ul>
+    </article>
+
+    <article class="job">
+      <h4>Projet associatif</h4>
+      <p class="job-role">Communication & événementiel</p>
+      <ul>
+        <li>Création de supports de communication pour un événement étudiant (affiches, posts réseaux sociaux).</li>
+        <li>Coordination avec l’équipe pour assurer la cohérence de l’image de l’événement.</li>
+      </ul>
+    </article>
+
+  </div>
+</section>
+
+
+      <!-- COMPÉTENCES -->
+      <section class="window window-hab">
+        <div class="window-header">
+          <div class="wh-left">
+            <span class="wh-dot red"></span>
+            <span class="wh-dot yellow"></span>
+            <span class="wh-dot green"></span>
+          </div>
+        </div>
+        <div class="window-body">
+          <h3 class="section-title">COMPÉTENCES</h3>
+          <ul class="hab-list">
+            <li>Bon relationnel et présentation soignée</li>
+            <li>Communication claire et efficace</li>
+            <li>Réactive, organisée et autonome</li>
+            <li>À l’aise avec les outils numériques et produits culturels</li>
+            <li>Apprentissage rapide et grande adaptabilité</li>
+          </ul>
+        </div>
+      </section>
+
+            <!-- COMPÉTENCES LOGICIELS -->
+      <section class="window window-soft">
+        <div class="window-header">
+          <div class="wh-left">
+            <span class="wh-dot red"></span>
+            <span class="wh-dot yellow"></span>
+            <span class="wh-dot green"></span>
+          </div>
+        </div>
+        <div class="window-body">
+          <h3 class="section-title">COMPÉTENCES LOGICIELS</h3>
+
+          <div class="soft-row">
+            <div class="soft-icon ai"></div>
+            <div class="soft-hearts">♥♥♥♥♥♥♥♥♥♥</div>
+          </div>
+          <div class="soft-row">
+            <div class="soft-icon ps"></div>
+            <div class="soft-hearts">♥♥♥♥♥♥♥♥♡♡</div>
+          </div>
+          <div class="soft-row">
+            <div class="soft-icon in"></div>
+            <div class="soft-hearts">♥♥♥♥♥♥♥♡♡♡</div>
+          </div>
+          <div class="soft-row">
+            <div class="soft-icon ppt"></div>
+            <div class="soft-hearts">♥♥♥♥♥♥♥♥♥♡</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LANGUES -->
+      <section class="window window-lang">
+        <div class="window-header">
+          <div class="wh-left">
+            <span class="wh-dot red"></span>
+            <span class="wh-dot yellow"></span>
+            <span class="wh-dot green"></span>
+          </div>
+        </div>
+        <div class="window-body">
+          <h3 class="section-title">LANGUES</h3>
+          <ul class="lang-list">
+            <li>Anglais : Bilingue</li>
+            <li>Bangla : Bilingue</li>
+            <li>Espagnol : A2</li>
+            <li>Mandarin : A1</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- CENTRES D’INTÉRÊT -->
+      <section class="window window-hobbies">
+        <div class="window-header">
+          <div class="wh-left">
+            <span class="wh-dot red"></span>
+            <span class="wh-dot yellow"></span>
+            <span class="wh-dot green"></span>
+          </div>
+        </div>
+        <div class="window-body">
+          <h3 class="section-title">CENTRES D’INTÉRÊT</h3>
+          <ul class="hobbies-list">
+            <li>Jeux vidéo et design graphique</li>
+            <li>Création de contenu vidéo et montage</li>
+            <li>Sport : badminton</li>
+            <li>Écriture créative et storytelling</li>
+            <li>Lecture</li>
+          </ul>
+        </div>
+      </section>
+
+    </main>
+  </div>
 </body>
 </html>
