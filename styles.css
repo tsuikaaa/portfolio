@@ -175,6 +175,7 @@ section::before {
     text-stroke: 2px var(--poppy-pink);
     letter-spacing: 4px;
     margin-bottom: 60px;
+    margin-top: 80px;
     position: relative;
     text-align: center;
     text-shadow: 
