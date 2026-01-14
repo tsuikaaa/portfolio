@@ -409,14 +409,21 @@ body::before {
   margin-top: 4px;
 }
 
-/* Compétences logiciels */
+/* Grille des compétences logiciels : 2 colonnes, 4 lignes */
+.window-soft .soft-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 colonnes */
+  gap: 10px 30px;                        /* espace lignes / colonnes */
+}
+
+/* Une ligne = icône + nom du logiciel */
 .window-soft .soft-row {
   display: grid;
   grid-template-columns: 40px 1fr;
   align-items: center;
-  margin-bottom: 10px;
 }
 
+/* Icône carrée */
 .soft-icon {
   width: 32px;
   height: 32px;
@@ -433,17 +440,23 @@ body::before {
 
 /* labels */
 .soft-icon::after { content: attr(data-label); }
-.ai::after  { content: "Ai"; }
-.ps::after  { content: "Ps"; }
-.in::after  { content: "In"; }
-.ppt::after { content: "PPT"; }
+.ai::after   { content: "Ai"; }
+.ps::after   { content: "Ps"; }
+.in::after   { content: "Id"; }
+.ae::after   { content: "Ae"; }
+.pr::after   { content: "Pr"; }
+.lr::after   { content: "Lr"; }
+.canva::after{ content: "Ca"; }
+.figma::after{ content: "Fg"; }
 
+/* Nom du logiciel */
 .soft-hearts {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--pastel-pink);
-  letter-spacing: 2px;
+  letter-spacing: 0.5px;
   font-family: var(--font-body);
 }
+
 
 /* Responsive */
 @media (max-width: 900px) {
