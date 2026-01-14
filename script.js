@@ -230,3 +230,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+const langToggle = document.getElementById('langToggle');
+
+if (langToggle) {
+  langToggle.addEventListener('click', () => {
+    const path = window.location.pathname;
+    const isFr = path.includes('_fr');
+
+    if (isFr) {
+      // version FR -> EN
+      window.location.href = path.replace('_fr', '');
+    } else {
+      // version EN -> FR
+      const newPath = path.replace('.html', '');
+      window.location.href = newPath + '_fr.html';
+    }
+  });
+}

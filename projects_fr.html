@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projets - Suhita</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="star-background">
+    <div class="star"></div><div class="star"></div><div class="star"></div>
+    <div class="star"></div><div class="star"></div><div class="star"></div>
+    <div class="star"></div><div class="star"></div><div class="star"></div>
+  </div>
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="index_fr.html" class="logo">S.A</a>
+      <ul class="nav-links">
+        <li><a href="index_fr.html">Accueil</a></li>
+        <li><a href="about_fr.html">À propos</a></li>
+        <li><a href="skills_fr.html">Compétences</a></li>
+        <li><a href="projects_fr.html" class="active">Projets</a></li>
+        <li><a href="contact_fr.html">Contact</a></li>
+        <button id="langToggle" class="btn btn-outline">EN</button>
+
+      </ul>
+      <button id="langToggle" class="btn btn-outline">EN</button>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects">
+    <div class="container">
+      <h2 class="section-title">Projets mis en avant</h2>
+
+      <div class="projects-grid">
+        <!-- Interview -->
+        <div class="project-card">
+          <div class="project-image">
+            <i class="fas fa-video"></i>
+          </div>
+          <div class="project-content">
+            <h3>
+              Interview
+              <span class="project-tag">Projet personnel</span>
+            </h3>
+            <a
+              href="#"
+              class="project-link open-project-modal"
+              data-title="Interview"
+              data-description="En groupe, nous avons contacté une journaliste pour découvrir son métier. Nous avons préparé les questions, réalisé l’interview et monté une vidéo making-of pour raconter l’expérience. Chaque membre a contribué à différentes étapes du projet, puis a monté sa propre version finale de la vidéo."
+              data-tech="Premiere Pro, Montage vidéo, Tournage, Rédaction, Interview, Travail d’équipe, Communication"
+              data-link="https://www.youtube.com/watch?v=ZFN7DJaqJDo"
+            >
+              En savoir plus
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Music Stream -->
+        <div class="project-card">
+          <div class="project-image">
+            <i class="fas fa-headphones"></i>
+          </div>
+          <div class="project-content">
+            <h3>
+              Music Stream
+              <span class="project-tag">Projet personnel</span>
+            </h3>
+            <a
+              href="#"
+              class="project-link open-project-modal"
+              data-title="Music Stream"
+              data-description="Premier projet de création d’un site de playlist musicale avec HTML, CSS et JavaScript. Interface claire, design responsive et éléments interactifs pour parcourir et écouter la musique."
+              data-tech="HTML, CSS, JavaScript"
+              data-link="https://ali.projetsmmichamps.fr/sae105"
+            >
+              En savoir plus
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- WebInventory -->
+        <div class="project-card">
+          <div class="project-image">
+            <i class="fas fa-laptop"></i>
+          </div>
+          <div class="project-content">
+            <h3>
+              WebInventory
+              <span class="project-tag">Projet personnel</span>
+            </h3>
+            <a
+              href="#"
+              class="project-link open-project-modal"
+              data-title="WebInventory"
+              data-description="Application web de gestion d’inventaire permettant de suivre et gérer des produits facilement. Fonctionnalités : listing de produits, gestion des stocks et interface intuitive. Il est possible d’ajouter un personnage après connexion via un formulaire."
+              data-tech="HTML, CSS, JavaScript, PHP, MySQL"
+              data-link="https://ali.projetsmmichamps.fr/webinventory"
+            >
+              En savoir plus
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Aidtudiants -->
+        <div class="project-card">
+          <div class="project-image">
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="project-content">
+            <h3>
+              Aidtudiants
+              <span class="project-tag">Projet de groupe</span>
+            </h3>
+            <a
+              href="#"
+              class="project-link open-project-modal"
+              data-title="Aidtudiants"
+              data-description="Projet de groupe pour aider les étudiants à trouver des ressources et du soutien. Aidtudiants est une plateforme qui connecte les étudiants à de l’aide académique, des supports de cours et du soutien entre pairs. Nous avons choisi une association avec une communication faible et repensé son site pour améliorer l’accessibilité et l’ergonomie."
+              data-tech="Figma, WordPress, UX/UI Design, Développement web, Travail d’équipe, Recherche, Communication, Accessibilité, Ergonomie"
+              data-link="http://aidtudiants.fiol.projetsmmichamps.fr"
+            >
+              En savoir plus
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- MiniChat -->
+        <div class="project-card">
+          <div class="project-image">
+            <i class="fas fa-comment-dots"></i>
+          </div>
+          <div class="project-content">
+            <h3>
+              MiniChat
+              <span class="project-tag">Projet personnel</span>
+            </h3>
+            <a
+              href="#"
+              class="project-link open-project-modal"
+              data-title="MiniChat"
+              data-description="Mini application de chat en ligne permettant d’envoyer et de recevoir des messages en temps réel. Fonctionnalités : authentification, historique des messages et interface épurée."
+              data-tech="HTML, CSS, JavaScript, PHP, MySQL"
+              data-link="https://www.ali.projetsmmichamps.fr/minichat"
+            >
+              En savoir plus
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- CyberAtlas -->
+        <div class="project-card">
+          <div class="project-image">
+            <i class="fas fa-chart-bar"></i>
+          </div>
+          <div class="project-content">
+            <h3>
+              CyberAtlas
+              <span class="project-tag">Projet de groupe</span>
+            </h3>
+            <a
+              href="#"
+              class="project-link open-project-modal"
+              data-title="CyberAtlas"
+              data-description="Expérience interactive basée sur une carte pour explorer des données de manière visuelle et intuitive, réalisée en travail collaboratif."
+              data-tech="HTML, CSS, JavaScript, Figma, UX/UI Design, Développement web, Visualisation de données, Travail d’équipe"
+              data-link="https://tsuikaaa.github.io/CyberAtlas"
+            >
+              En savoir plus
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal overlay -->
+  <div class="project-modal-overlay" id="projectModalOverlay"></div>
+
+  <!-- Modal -->
+  <div class="project-modal" id="projectModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="project-modal-content">
+      <button class="project-modal-close" id="projectModalClose" aria-label="Fermer">
+        <i class="fas fa-times"></i>
+      </button>
+      <h3 id="projectModalTitle"></h3>
+      <p id="projectModalDescription"></p>
+      <p class="project-modal-tech">
+        <strong>Stack technique</strong>
+        <span id="projectModalTech"></span>
+      </p>
+      <a
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-outline"
+        id="projectModalLink"
+      >
+        Voir le projet
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Navigation <i class="fas fa-link"></i></h3>
+          <p><a href="index_fr.html">Accueil</a></p>
+          <p><a href="about_fr.html">À propos</a></p>
+          <p><a href="skills_fr.html">Compétences</a></p>
+          <p><a href="projects_fr.html">Projets</a></p>
+          <p><a href="contact_fr.html">Contact</a></p>
+        </div>
+        <div class="footer-section">
+          <h3>Contact <i class="fas fa-envelope"></i></h3>
+          <p><a href="mailto:suhita2501@gmail.com">suhita2501@gmail.com</a></p>
+          <p><a href="tel:+33760509864">+33 7 60 50 98 64</a></p>
+          <p><a href="https://www.linkedin.com/in/ali-suhita" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>© 2025 Portfolio de Suhita Ali. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

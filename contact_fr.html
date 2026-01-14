@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact - Suhita</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="star-background">
+    <div class="star"></div><div class="star"></div><div class="star"></div>
+    <div class="star"></div><div class="star"></div><div class="star"></div>
+    <div class="star"></div><div class="star"></div><div class="star"></div>
+  </div>
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="index_fr.html" class="logo">S.A</a>
+      <ul class="nav-links">
+        <li><a href="index_fr.html">Accueil</a></li>
+        <li><a href="about_fr.html">À propos</a></li>
+        <li><a href="skills_fr.html">Compétences</a></li>
+        <li><a href="projects_fr.html">Projets</a></li>
+        <li><a href="contact_fr.html" class="active">Contact</a></li>
+        <button id="langToggle" class="btn btn-outline">EN</button>
+
+      </ul>
+      <button id="langToggle" class="btn btn-outline">EN</button>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2 class="section-title">Me contacter</h2>
+      <div class="contact-content">
+        <div class="contact-info">
+          <h3>Créons quelque chose de fort ensemble</h3>
+          <p>
+            Je suis actuellement disponible pour des projets freelance et des opportunités à temps plein. Discutons de la façon dont on peut donner vie à vos idées.
+          </p>
+
+          <div class="contact-details">
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <h4>Email</h4>
+                <a href="mailto:suhita2501@gmail.com">suhita2501@gmail.com</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <div>
+                <h4>Téléphone</h4>
+                <a href="tel:+33760509864">+33 7 60 50 98 64</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <div>
+                <h4>Localisation</h4>
+                <p>Paris, France</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="social-links">
+            <a href="https://github.com/tsuikaaa" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://x.com/snakebites25" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/ali-suhita" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/soohascloud?igsh=NzkwMjZyZmw1cDFm" title="Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="contact-form-wrapper">
+          <form id="contactForm" class="contact-form">
+            <div class="form-group">
+              <label for="name">Nom</label>
+              <input type="text" id="name" name="name" placeholder="Votre nom" required />
+            </div>
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" placeholder="Votre e-mail" required />
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" placeholder="Votre message" required></textarea>
+            </div>
+            <button type="submit" id="submitBtn" class="btn">
+              Envoyer
+            </button>
+            <p id="formMessage" class="form-message"></p>
+          </form>
+
+          <div id="toast" class="toast"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Navigation <i class="fas fa-link"></i></h3>
+          <p><a href="index_fr.html">Accueil</a></p>
+          <p><a href="about_fr.html">À propos</a></p>
+          <p><a href="skills_fr.html">Compétences</a></p>
+          <p><a href="projects_fr.html">Projets</a></p>
+          <p><a href="contact_fr.html">Contact</a></p>
+        </div>
+        <div class="footer-section">
+          <h3>Contact <i class="fas fa-envelope"></i></h3>
+          <p><a href="mailto:suhita2501@gmail.com">suhita2501@gmail.com</a></p>
+          <p><a href="tel:+33760509864">+33 7 60 50 98 64</a></p>
+          <p><a href="https://www.linkedin.com/in/ali-suhita" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>© 2025 Portfolio de Suhita Ali. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
