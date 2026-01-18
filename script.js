@@ -194,13 +194,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// TOGGLE LANGUE - MÊME PAGE, LANGUE CHANGE
+// TOGGLE LANGUE - MÊME PAGE, LANGUE CHANGE (sans emoji)
 document.addEventListener('DOMContentLoaded', () => {
     const langToggle = document.getElementById('langToggle');
     if (langToggle) {
         const currentPath = window.location.pathname;
         const isFr = currentPath.includes('_fr') || currentPath.includes('fr.html');
-        langToggle.textContent = isFr ? '🇬🇧 EN' : '🇫🇷 FR';
+        langToggle.textContent = isFr ? 'EN' : 'FR';
         
         console.log('Page:', currentPath, '| Langue:', isFr ? 'FR' : 'EN');
         
