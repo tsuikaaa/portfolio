@@ -194,23 +194,28 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// LANGAGE TOGGLE GLOBAL - Fonctionne sur TOUTES les pages
+// TOGGLE LANGUE - MÊME PAGE, LANGUE CHANGE
 document.addEventListener('DOMContentLoaded', () => {
     const langToggle = document.getElementById('langToggle');
     if (langToggle) {
-        // Détecte langue COURANTE et met le bon texte
         const currentPath = window.location.pathname;
-        const isFrPage = currentPath.includes('_fr') || currentPath.includes('index_fr');
-        langToggle.textContent = isFrPage ? '🇬🇧 EN' : '🇫🇷 FR';
+        const isFr = currentPath.includes('_fr') || currentPath.includes('fr.html');
+        langToggle.textContent = isFr ? '🇬🇧 EN' : '🇫🇷 FR';
         
-        console.log('Page détectée:', isFrPage ? 'FR' : 'EN');  // Debug
+        console.log('Page:', currentPath, '| Langue:', isFr ? 'FR' : 'EN');
         
         langToggle.addEventListener('click', () => {
-            const pageName = currentPath.replace(/^(\/portfolio\/)?(index_?)?/i, '').replace(/(_fr)?(\.html)?$/i, '');
-            const targetLang = isFrPage ? '' : '_fr';
-            const targetFile = pageName ? `${pageName}${targetLang}.html` : `index${targetLang}.html`;
+            // Extrait nom page SANS langue/extension
+            let pageName = currentPath
+                .replace(/^\/portfolio\//, '')           // Enlève /portfolio/
+                .replace(/^(index|about|skills|projects|contact|cv)_?(fr)?(\.html)?$/i, '$1')
+                .replace(/\/$/, '');                     // Enlève slash final
             
-            window.location.href = `/portfolio/${targetFile}`;
+            // Ajoute langue OPPOSÉE
+            const targetLang = isFr ? '' : '_fr';
+            const targetPath = pageName ? `/portfolio/${pageName}${targetLang}.html` : '/portfolio/index.html';
+            
+            window.location.href = targetPath;
         });
     }
 });
