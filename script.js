@@ -194,20 +194,23 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+// LANGAGE TOGGLE + TEXTE DYNAMIQUE
 const langToggle = document.getElementById('langToggle');
 if (langToggle) {
-    const isFr = window.location.pathname.includes('index_fr');
-    langToggle.textContent = isFr ? 'EN' : 'FR';  // EN sur FR, FR sur EN
+    // Détecte langue actuelle et met à jour texte bouton
+    const isCurrentlyFr = window.location.pathname.includes('index_fr.html') || window.location.pathname.includes('_fr');
+    langToggle.textContent = isCurrentlyFr ? 'EN' : 'FR';
     
     langToggle.addEventListener('click', () => {
         const path = window.location.pathname;
-        const isFrPage = path.includes('_fr') || path.includes('index_fr');
+        const isFr = path.includes('index_fr.html') || path.includes('_fr.html');
         
-        if (isFrPage) {
-            window.location.href = path.replace('_fr', '').replace('index_fr.html', 'index.html');
+        if (isFr) {
+            // FR → EN
+            window.location.href = '/portfolio/index.html';
         } else {
-            const newPath = path.replace('.html', '');
-            window.location.href = newPath + '_fr.html';
+            // EN → FR  
+            window.location.href = '/portfolio/index_fr.html';
         }
     });
 }
