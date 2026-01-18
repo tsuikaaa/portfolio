@@ -46,43 +46,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Contact Form
-    const contactForm = document.getElementById('contactForm');
-    const submitBtn = document.getElementById('submitBtn');
-    const formMessage = document.getElementById('formMessage');
-    const toast = document.getElementById('toast');
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            submitBtn.classList.add('loading');
-            submitBtn.disabled = true;
-            
-            setTimeout(() => {
-                submitBtn.classList.remove('loading');
-                submitBtn.disabled = false;
-                
-                formMessage.textContent = 'Thank you! Your message has been sent.';
-                formMessage.className = 'form-message success';
-                
-                toast.textContent = 'Message sent successfully!';
-                toast.classList.add('show');
-                
-                contactForm.reset();
-                
-                setTimeout(() => {
-                    toast.classList.remove('show');
-                }, 5000);
-                
-                setTimeout(() => {
-                    formMessage.style.display = 'none';
-                }, 8000);
-                
-            }, 1500);
-        });
-    }
-
     // Animate skill bars
     const skillBars = document.querySelectorAll('.skill-level');
     const skillObserver = new IntersectionObserver((entries) => {
@@ -231,23 +194,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// LANGUAGE TOGGLE CORRIGÉ - Fonctionne sur /portfolio/ ET /portfolio/index.html
+// LANGUAGE TOGGLE - Version finale pour /portfolio/
 const langToggle = document.getElementById('langToggle');
 if (langToggle) {
     langToggle.addEventListener('click', () => {
-        // Nettoie le path: enlève /index.html et / final → "/portfolio"
+        // Nettoie TOUT: enlève index.html/index_fr.html et / final → "/portfolio"
         let path = window.location.pathname
-            .replace(/\/index\.html$/, '')  // /portfolio/index.html → /portfolio/
-            .replace(/\/$/, '');            // /portfolio/ → /portfolio
+            .replace(/\/index(_fr)?\.html$/, '')  // Gère index.html ET index_fr.html
+            .replace(/\/$/, '');                  // Enlève / final
         
-        const isFr = path.includes('index_fr') || path.includes('_fr');
+        const isFr = window.location.pathname.includes('index_fr.html');  // Détection précise
         
         if (isFr) {
-            // FR → EN
-            window.location.href = path + '/index.html';
+            window.location.href = path + '/index.html';     // FR → EN
         } else {
-            // EN → FR
-            window.location.href = path + '/index_fr.html';
+            window.location.href = path + '/index_fr.html';  // EN → FR
         }
     });
 }
