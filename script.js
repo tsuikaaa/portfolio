@@ -194,23 +194,23 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// LANGAGE TOGGLE + TEXTE DYNAMIQUE
-const langToggle = document.getElementById('langToggle');
-if (langToggle) {
-    // Détecte langue actuelle et met à jour texte bouton
-    const isCurrentlyFr = window.location.pathname.includes('index_fr.html') || window.location.pathname.includes('_fr');
-    langToggle.textContent = isCurrentlyFr ? 'EN' : 'FR';
-    
-    langToggle.addEventListener('click', () => {
-        const path = window.location.pathname;
-        const isFr = path.includes('index_fr.html') || path.includes('_fr.html');
+// LANGAGE TOGGLE GLOBAL - Fonctionne sur TOUTES les pages
+document.addEventListener('DOMContentLoaded', () => {
+    const langToggle = document.getElementById('langToggle');
+    if (langToggle) {
+        // Détecte langue COURANTE et met le bon texte
+        const currentPath = window.location.pathname;
+        const isFrPage = currentPath.includes('_fr') || currentPath.includes('index_fr');
+        langToggle.textContent = isFrPage ? '🇬🇧 EN' : '🇫🇷 FR';
         
-        if (isFr) {
-            // FR → EN
-            window.location.href = '/portfolio/index.html';
-        } else {
-            // EN → FR  
-            window.location.href = '/portfolio/index_fr.html';
-        }
-    });
-}
+        console.log('Page détectée:', isFrPage ? 'FR' : 'EN');  // Debug
+        
+        langToggle.addEventListener('click', () => {
+            const pageName = currentPath.replace(/^(\/portfolio\/)?(index_?)?/i, '').replace(/(_fr)?(\.html)?$/i, '');
+            const targetLang = isFrPage ? '' : '_fr';
+            const targetFile = pageName ? `${pageName}${targetLang}.html` : `index${targetLang}.html`;
+            
+            window.location.href = `/portfolio/${targetFile}`;
+        });
+    }
+});
