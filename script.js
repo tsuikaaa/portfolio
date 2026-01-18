@@ -177,74 +177,77 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 1000);
 });
 
+// ---- MODAL PROJECTS ----
 document.addEventListener('DOMContentLoaded', () => {
-  // ---- MODAL PROJECTS ----
-  const modal = document.getElementById('projectModal');
-  const overlay = document.getElementById('projectModalOverlay');
-  const closeBtn = document.getElementById('projectModalClose');
+    const modal = document.getElementById('projectModal');
+    const overlay = document.getElementById('projectModalOverlay');
+    const closeBtn = document.getElementById('projectModalClose');
 
-  if (modal && overlay && closeBtn) {
-    const titleEl = document.getElementById('projectModalTitle');
-    const descEl = document.getElementById('projectModalDescription');
-    const techEl = document.getElementById('projectModalTech');
-    const linkEl = document.getElementById('projectModalLink');
+    if (modal && overlay && closeBtn) {
+        const titleEl = document.getElementById('projectModalTitle');
+        const descEl = document.getElementById('projectModalDescription');
+        const techEl = document.getElementById('projectModalTech');
+        const linkEl = document.getElementById('projectModalLink');
 
-    const openButtons = document.querySelectorAll('.open-project-modal');
+        const openButtons = document.querySelectorAll('.open-project-modal');
 
-    const openModal = (btn) => {
-      const title = btn.dataset.title || '';
-      const description = btn.dataset.description || '';
-      const tech = btn.dataset.tech || '';
-      const link = btn.dataset.link || '#';
+        const openModal = (btn) => {
+            const title = btn.dataset.title || '';
+            const description = btn.dataset.description || '';
+            const tech = btn.dataset.tech || '';
+            const link = btn.dataset.link || '#';
 
-      titleEl.textContent = title;
-      descEl.textContent = description;
-      techEl.textContent = tech;
-      linkEl.href = link;
+            titleEl.textContent = title;
+            descEl.textContent = description;
+            techEl.textContent = tech;
+            linkEl.href = link;
 
-      modal.classList.add('is-open');
-      overlay.classList.add('is-open');
-      modal.setAttribute('aria-hidden', 'false');
-    };
+            modal.classList.add('is-open');
+            overlay.classList.add('is-open');
+            modal.setAttribute('aria-hidden', 'false');
+        };
 
-    const closeModal = () => {
-      modal.classList.remove('is-open');
-      overlay.classList.remove('is-open');
-      modal.setAttribute('aria-hidden', 'true');
-    };
+        const closeModal = () => {
+            modal.classList.remove('is-open');
+            overlay.classList.remove('is-open');
+            modal.setAttribute('aria-hidden', 'true');
+        };
 
-    openButtons.forEach((btn) => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        openModal(btn);
-      });
-    });
+        openButtons.forEach((btn) => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                openModal(btn);
+            });
+        });
 
-    closeBtn.addEventListener('click', closeModal);
-    overlay.addEventListener('click', closeModal);
+        closeBtn.addEventListener('click', closeModal);
+        overlay.addEventListener('click', closeModal);
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        closeModal();
-      }
-    });
-  }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    }
 });
 
+// LANGUAGE TOGGLE CORRIGÉ - Fonctionne sur /portfolio/ ET /portfolio/index.html
 const langToggle = document.getElementById('langToggle');
-
 if (langToggle) {
-  langToggle.addEventListener('click', () => {
-    const path = window.location.pathname;
-    const isFr = path.includes('_fr');
-
-    if (isFr) {
-      // version FR -> EN
-      window.location.href = path.replace('_fr', '');
-    } else {
-      // version EN -> FR
-      const newPath = path.replace('.html', '');
-      window.location.href = newPath + '_fr.html';
-    }
-  });
+    langToggle.addEventListener('click', () => {
+        // Nettoie le path: enlève /index.html et / final → "/portfolio"
+        let path = window.location.pathname
+            .replace(/\/index\.html$/, '')  // /portfolio/index.html → /portfolio/
+            .replace(/\/$/, '');            // /portfolio/ → /portfolio
+        
+        const isFr = path.includes('index_fr') || path.includes('_fr');
+        
+        if (isFr) {
+            // FR → EN
+            window.location.href = path + '/index.html';
+        } else {
+            // EN → FR
+            window.location.href = path + '/index_fr.html';
+        }
+    });
 }
