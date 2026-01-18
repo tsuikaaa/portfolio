@@ -208,13 +208,12 @@ h1, h2, h3, h4 {
     border-bottom-color: var(--punch-pink);
 }
 
-
 .logo {
     font-family: var(--font-punk);
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     color: var(--poppy-pink);
     text-decoration: none;
-    letter-spacing: 5px;
+    letter-spacing: 3px;
     position: relative;
     text-shadow: 
         2px 2px 0 var(--black),
@@ -241,10 +240,10 @@ h1, h2, h3, h4 {
     display: flex;
     list-style: none;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1rem;
     background: rgba(0, 0, 0, 0.8);
-    padding: 15px 25px;
-    border: 2px solid var(--poppy-pink);
+    padding: 8px 16px;
+    border: 1px solid var(--poppy-pink);
     position: relative;
 }
 
@@ -264,11 +263,11 @@ h1, h2, h3, h4 {
     color: var(--off-white);
     text-decoration: none;
     font-family: var(--font-grunge);
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 2px;
     position: relative;
-    padding: 8px 0;
+    padding: 4px 0;
     transition: var(--punk-transition);
 }
 
@@ -299,24 +298,24 @@ h1, h2, h3, h4 {
     width: 100%;
 }
 
-
 .hamburger {
     display: none;
     flex-direction: column;
     cursor: pointer;
     gap: 6px;
-    padding: 10px;
+    padding: 6px;
     background: var(--black);
-    border: 2px solid var(--poppy-pink);
+    border: 1px solid var(--poppy-pink);
 }
 
 .hamburger span {
-    width: 30px;
-    height: 3px;
+    width: 24px;
+    height: 2px;
     background: var(--poppy-pink);
     transition: var(--punk-transition);
     box-shadow: 0 0 5px var(--poppy-pink);
 }
+
 
 /* PUNK HERO */
 .hero {
