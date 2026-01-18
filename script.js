@@ -194,21 +194,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// LANGUAGE TOGGLE - Version finale pour /portfolio/
+// LANGUAGE TOGGLE CORRIGÉ 
 const langToggle = document.getElementById('langToggle');
 if (langToggle) {
     langToggle.addEventListener('click', () => {
-        // Nettoie TOUT: enlève index.html/index_fr.html et / final → "/portfolio"
-        let path = window.location.pathname
-            .replace(/\/index(_fr)?\.html$/, '')  // Gère index.html ET index_fr.html
-            .replace(/\/$/, '');                  // Enlève / final
+        let basePath = window.location.pathname
+            .replace(/^\/portfolio\/index.html$/, '/portfolio/')     // → /portfolio/
+            .replace(/^\/portfolio\/index_fr.html$/, '/portfolio/') // → /portfolio/
+            .replace(/\/$/, '/index.html');                         // /portfolio/ → /portfolio/index.html
         
-        const isFr = window.location.pathname.includes('index_fr.html');  // Détection précise
+        const isFr = window.location.pathname.includes('index_fr.html');
         
         if (isFr) {
-            window.location.href = path + '/index.html';     // FR → EN
+            window.location.href = '/portfolio/index.html';  // Toujours vers EN
         } else {
-            window.location.href = path + '/index_fr.html';  // EN → FR
+            window.location.href = '/portfolio/index_fr.html'; // Toujours vers FR
         }
     });
 }
