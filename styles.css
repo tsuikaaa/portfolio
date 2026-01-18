@@ -187,13 +187,8 @@ section::before {
     animation: spin 10s linear infinite;
 }
 
-.section-title::before {
-    left: -50px;
-}
-
-.section-title::after {
-    right: -50px;
-}
+.section-title::before { left: -50px; }
+.section-title::after { right: -50px; }
 
 @keyframes spin {
     0% { transform: translateY(-50%) rotate(0deg); }
@@ -286,10 +281,7 @@ h1, h2, h3, h4 {
     color: var(--pastel-pink);
 }
 
-.nav-links a:hover::before {
-    opacity: 1;
-    transform: rotate(180deg);
-}
+.nav-links a:hover::before { opacity: 1; transform: rotate(180deg); }
 
 .nav-links a::after {
     content: '';
@@ -392,15 +384,8 @@ h1, h2, h3, h4 {
     animation: bounce 2s infinite;
 }
 
-.title::before {
-    left: -50px;
-    top: 20%;
-}
-
-.title::after {
-    right: -50px;
-    bottom: 20%;
-}
+.title::before { left: -50px; top: 20%; }
+.title::after { right: -50px; bottom: 20%; }
 
 @keyframes bounce {
     0%, 100% { transform: translateY(0); }
@@ -483,11 +468,7 @@ h1, h2, h3, h4 {
     color: var(--pastel-pink);
 }
 
-.btn:hover::before {
-    opacity: 1;
-    right: 10px;
-    transform: rotate(360deg);
-}
+.btn:hover::before { opacity: 1; right: 10px; transform: rotate(360deg); }
 
 .btn::after {
     content: '';
@@ -883,14 +864,8 @@ h1, h2, h3, h4 {
     transform: rotate(360deg) scale(1.5);
 }
 
-.project-card:hover {
-    transform: translateY(-10px) rotate(1deg) !important;
-    border-color: transparent;
-}
-
-.project-card:hover::before {
-    opacity: 1;
-}
+.project-card:hover { transform: translateY(-10px) rotate(1deg) !important; border-color: transparent; }
+.project-card:hover::before { opacity: 1; }
 
 .project-image {
     height: 250px;
@@ -999,15 +974,8 @@ h1, h2, h3, h4 {
     color: var(--pastel-pink);
 }
 
-.project-link:hover {
-    color: var(--bubblegum-pink);
-    gap: 25px;
-}
-
-.project-link:hover::after {
-    right: -40px;
-    transform: rotate(360deg);
-}
+.project-link:hover { color: var(--bubblegum-pink); gap: 25px; }
+.project-link:hover::after { right: -40px; transform: rotate(360deg); }
 
 /* PUNK CONTACT – CLEANER VERSION */
 .contact {
@@ -1604,8 +1572,6 @@ copyright i {
   }
 }
 
-
-
 /* ========== NAVBAR ========== */
 .navbar {
     position: fixed;
@@ -1724,40 +1690,37 @@ copyright i {
         margin-right: auto; /* logo reste à gauche */
     }
 }
+/* HERO responsive */
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 100px; /* optionnel, ajuste si besoin */
+  }
 
-@media (max-width: 900px) {
-    /* Force empilement vertical */
-    .hero-content {
-        display: flex !important;
-        flex-direction: column !important; /* texte et image empilés */
-        align-items: center;
-        gap: 1rem;
-    }
+  .hero .container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* ou center si tu préfères centrer */
+    gap: 30px;
+  }
 
-    /* L'image remonte avant la description */
-    .hero-image {
-        order: -1;           /* remonte au-dessus du texte */
-        width: 90%;          /* responsive */
-        max-width: 350px;    /* pas trop large */
-        margin: 0 auto 1rem auto; /* centrage et espace dessous */
-        transform: rotate(0deg);  /* rotation réduite pour mobile */
-    }
+  .hero-content {
+    width: 100%;
+    order: 1;
+  }
 
-    .image-frame {
-        padding: 10px; 
-        box-shadow: 10px 10px 0 var(--black), 20px 20px 20px rgba(0,0,0,0.5);
-    }
+  .hero-image {
+    width: 100%;
+    order: 2;           /* vient juste après hero-content (donc après hero-buttons) */
+    margin-top: 0;      /* ou 20px si tu veux plus d’espace */
+    display: flex;
+    justify-content: center;
+  }
 
-    /* Centre la description et les boutons */
-    .description {
-        text-align: center;
-    }
-
-    .hero-buttons {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
-    }
+  .hero-buttons {
+    flex-direction: column;
+    align-items: flex-start; /* ou center */
+    gap: 15px;
+  }
 }
+
 
