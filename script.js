@@ -195,19 +195,19 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const langToggle = document.getElementById('langToggle');
-
 if (langToggle) {
-  langToggle.addEventListener('click', () => {
-    const path = window.location.pathname;
-    const isFr = path.includes('_fr');
-
-    if (isFr) {
-      // version FR -> EN
-      window.location.href = path.replace('_fr', '');
-    } else {
-      // version EN -> FR
-      const newPath = path.replace('.html', '');
-      window.location.href = newPath + '_fr.html';
-    }
-  });
+    const isFr = window.location.pathname.includes('index_fr');
+    langToggle.textContent = isFr ? 'EN' : 'FR';  // EN sur FR, FR sur EN
+    
+    langToggle.addEventListener('click', () => {
+        const path = window.location.pathname;
+        const isFrPage = path.includes('_fr') || path.includes('index_fr');
+        
+        if (isFrPage) {
+            window.location.href = path.replace('_fr', '').replace('index_fr.html', 'index.html');
+        } else {
+            const newPath = path.replace('.html', '');
+            window.location.href = newPath + '_fr.html';
+        }
+    });
 }
