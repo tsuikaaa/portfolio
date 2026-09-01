@@ -25,25 +25,6 @@ document.addEventListener('DOMContentLoaded', function() {
             navbar.classList.remove('scrolled');
         }
 
-        // Active nav on scroll
-        let current = '';
-        const sections = document.querySelectorAll('section');
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            
-            if (window.scrollY >= (sectionTop - 150)) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        navItems.forEach(item => {
-            item.classList.remove('active');
-            if (item.getAttribute('href').substring(1) === current) {
-                item.classList.add('active');
-            }
-        });
     });
 
     // Animate skill bars
@@ -113,19 +94,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Title glitch effect
     const title = document.querySelector('.title');
-    setInterval(() => {
-        if (Math.random() > 0.7) {
-            title.style.textShadow = 
-                `4px 4px 0 var(--black),
-                 6px 6px 0 rgba(0, 0, 0, 0.8),
-                 0 0 10px var(--poppy-pink)`;
-            setTimeout(() => {
+    if (title) {
+        setInterval(() => {
+            if (Math.random() > 0.7) {
                 title.style.textShadow = 
-                    `6px 6px 0 var(--black),
-                     10px 10px 20px rgba(0, 0, 0, 0.8)`;
-            }, 100);
-        }
-    }, 3000);
+                    `4px 4px 0 var(--black),
+                     6px 6px 0 rgba(0, 0, 0, 0.8),
+                     0 0 10px var(--poppy-pink)`;
+                setTimeout(() => {
+                    title.style.textShadow = 
+                        `6px 6px 0 var(--black),
+                         10px 10px 20px rgba(0, 0, 0, 0.8)`;
+                }, 100);
+            }
+        }, 3000);
+    }
 
     // Random star twinkle
     const stars = document.querySelectorAll('.star');
@@ -199,21 +182,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const langToggle = document.getElementById('langToggle');
     if (langToggle) {
         const currentPath = window.location.pathname;
-        const isFr = currentPath.includes('_fr') || currentPath.includes('fr.html');
+        const currentFile = currentPath.split('/').pop() || 'index.html';
+        const isFr = /_fr(?:\.html)+$/i.test(currentFile);
         langToggle.textContent = isFr ? 'EN' : 'FR';
         
         console.log('Page:', currentPath, '| Langue:', isFr ? 'FR' : 'EN');
         
         langToggle.addEventListener('click', () => {
-            // Extrait nom page SANS langue/extension
-            let pageName = currentPath
-                .replace(/^\/portfolio\//, '')           // Enlève /portfolio/
-                .replace(/^(index|about|skills|projects|contact|cv)_?(fr)?(\.html)?$/i, '$1')
-                .replace(/\/$/, '');                     // Enlève slash final
-            
-            // Ajoute langue OPPOSÉE
+            const pageName = currentFile
+                .replace(/(?:\.html)+$/i, '')
+                .replace(/_fr$/i, '');
             const targetLang = isFr ? '' : '_fr';
-            const targetPath = pageName ? `/portfolio/${pageName}${targetLang}.html` : '/portfolio/index.html';
+            const directory = `${currentPath
+                .replace(/\/+/g, '/')
+                .replace(/\/[^/]*$/, '')}/`;
+            const targetPath = `${directory}${pageName || 'index'}${targetLang}.html`;
             
             window.location.href = targetPath;
         });
