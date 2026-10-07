@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // TOGGLE LANGUE - MÊME PAGE, LANGUE CHANGE (sans emoji)
 document.addEventListener('DOMContentLoaded', () => {
     const langToggle = document.getElementById('langToggle');
-    if (langToggle) {
+    if (langToggle && !langToggle.disabled) {
         const currentPath = window.location.pathname;
         const currentFile = currentPath.split('/').pop() || 'index.html';
         const isFr = /_fr(?:\.html)+$/i.test(currentFile);

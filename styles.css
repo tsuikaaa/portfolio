@@ -1633,6 +1633,16 @@ copyright i {
     transform: scale(0.92);
 }
 
+#langToggle:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+#langToggle:disabled:hover {
+    background: none;
+    color: var(--poppy-pink);
+}
+
 /* ========== HAMBURGER ========== */
 .hamburger {
     display: none;
